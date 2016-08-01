@@ -16,9 +16,10 @@ public final class FakeDrinkMaker implements DrinkMaker {
     }
 
     public boolean hasDrinkBeenRequested(Drink drink, int quantity) {
-        return commandHistory
-                .stream()
-                .filter(c -> c.equals(new DrinkMakerCommandFormatter().format(drink, quantity)))
-                .count() != 0;
+        return commandHistory.contains(new DrinkMakerCommandFormatter().format(drink, quantity));
+    }
+
+    public boolean hasMessageBeenPrinted(String message) {
+        return commandHistory.contains("T:" + message);
     }
 }
