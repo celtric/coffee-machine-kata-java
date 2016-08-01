@@ -1,7 +1,7 @@
 package coffeemachine.tests.utils;
 
-import coffeemachine.Drink;
-import coffeemachine.DrinkMaker;
+import coffeemachine.domain.Drink;
+import coffeemachine.domain.DrinkMaker;
 import java.util.ArrayList;
 import java.util.Collection;
 

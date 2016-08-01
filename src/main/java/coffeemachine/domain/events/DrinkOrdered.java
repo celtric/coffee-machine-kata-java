@@ -1,9 +1,10 @@
-package coffeemachine;
+package coffeemachine.domain.events;
 
+import coffeemachine.domain.Drink;
 import lombok.Value;
 
 @Value
-public final class DrinkOrdered implements DrinkMakerCommand {
+public final class DrinkOrdered implements DrinkRequester {
 
     private final String id;
     private final Drink drink;

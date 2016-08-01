@@ -1,9 +1,9 @@
 package coffeemachine.tests.acceptance;
 
-import coffeemachine.App;
-import coffeemachine.Drink;
-import coffeemachine.DrinkOrdered;
-import coffeemachine.MessageBus;
+import coffeemachine.app.App;
+import coffeemachine.domain.Drink;
+import coffeemachine.domain.events.DrinkOrdered;
+import coffeemachine.app.MessageBus;
 import coffeemachine.tests.utils.FakeDrinkMaker;
 import org.junit.Test;
 

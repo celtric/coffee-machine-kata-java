@@ -1,4 +1,4 @@
-package coffeemachine;
+package coffeemachine.app;
 
 import java.util.ArrayList;
 import java.util.Collection;

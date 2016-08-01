@@ -1,4 +1,7 @@
-package coffeemachine;
+package coffeemachine.app;
+
+import coffeemachine.domain.DrinkMaker;
+import coffeemachine.domain.events.DrinkRequester;
 
 public final class App {
 
@@ -17,8 +20,8 @@ public final class App {
 
     private void registerListeners() {
         MessageBus.listen(message -> {
-            if (message instanceof DrinkMakerCommand) {
-                drinkMaker.command(((DrinkMakerCommand) message).toCommand());
+            if (message instanceof DrinkRequester) {
+                drinkMaker.command(((DrinkRequester) message).toCommand());
             }
         });
     }
