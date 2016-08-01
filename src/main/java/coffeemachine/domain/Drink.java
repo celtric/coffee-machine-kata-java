@@ -16,6 +16,10 @@ public final class Drink {
         return new Drink("H");
     }
 
+    public static Drink coffee() {
+        return new Drink("C");
+    }
+
     String toShortHand() {
         return shortHand;
     }
