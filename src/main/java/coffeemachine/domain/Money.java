@@ -14,9 +14,9 @@ public final class Money {
         return new Money(amount, "EUR");
     }
 
-    public boolean lessThan(Money money) {
+    boolean lessThanOrEqual(Money money) {
         assertSameCurrency(money);
-        return amount < money.amount;
+        return amount <= money.amount;
     }
 
     private void assertSameCurrency(Money money) {
