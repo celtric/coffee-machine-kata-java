@@ -15,10 +15,17 @@ public final class OrderingTest {
     private final App app = App.start(drinkMaker);
 
     @Test
-    public void a_customer_can_order_tea() {
+    public void a_customer_can_order_tea_with_sugar() {
         publish(new DrinkOrdered("AN-ID", Drink.tea(), 1));
 
         assertDrinkRequested(Drink.tea(), 1);
+    }
+
+    @Test
+    public void a_customer_can_order_chocolate() {
+        publish(new DrinkOrdered("AN-ID", Drink.chocolate(), 0));
+
+        assertDrinkRequested(Drink.chocolate(), 0);
     }
 
     //---[ Helpers ]--------------------------------------------------------------------//

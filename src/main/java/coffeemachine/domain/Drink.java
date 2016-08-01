@@ -12,7 +12,11 @@ public final class Drink {
         return new Drink("T");
     }
 
-    public String toShortHand() {
+    public static Drink chocolate() {
+        return new Drink("H");
+    }
+
+    String toShortHand() {
         return shortHand;
     }
 }

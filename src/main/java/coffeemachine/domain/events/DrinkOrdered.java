@@ -1,6 +1,7 @@
 package coffeemachine.domain.events;
 
 import coffeemachine.domain.Drink;
+import coffeemachine.domain.DrinkMakerCommandFormatter;
 import lombok.Value;
 
 @Value
@@ -18,6 +19,6 @@ public final class DrinkOrdered implements DrinkRequester {
 
     @Override
     public String toCommand() {
-        return String.format("%s:%d:0", drink.toShortHand(), quantity);
+        return new DrinkMakerCommandFormatter().format(drink, quantity);
     }
 }
