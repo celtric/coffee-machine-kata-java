@@ -30,6 +30,20 @@ public final class OrderingTest {
     }
 
     @Test
+    public void a_customer_can_order_coffee() {
+        buyDrink(Drink.coffee(), 0, Money.euro(100));
+
+        assertDrinkRequested(Drink.coffee(), 0);
+    }
+
+    @Test
+    public void a_customer_can_order_orange_juice() {
+        buyDrink(Drink.orangeJuice(), 0, Money.euro(100));
+
+        assertDrinkRequested(Drink.orangeJuice(), 0);
+    }
+
+    @Test
     public void a_drink_order_is_rejected_if_not_enough_money_is_provided() {
         buyDrink(Drink.tea(), 1, Money.euro(0));
 

@@ -22,6 +22,10 @@ public final class Drink {
         return new Drink("C", Money.euro(60));
     }
 
+    public static Drink orangeJuice() {
+        return new Drink("O", Money.euro(60));
+    }
+
     String toShortHand() {
         return shortHand;
     }
