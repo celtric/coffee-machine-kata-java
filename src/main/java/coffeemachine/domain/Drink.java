@@ -1,5 +1,8 @@
 package coffeemachine.domain;
 
+import lombok.Value;
+
+@Value
 public final class Drink {
 
     private final String shortHand;

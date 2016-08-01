@@ -24,6 +24,9 @@ public final class ReportingTest {
     public void reporting_case_01() {
         buyDrink(Drink.tea(), 1, Money.euro(100));
 
+        assertTotalDrinkQuantity(Drink.tea(), 1);
+        assertTotalDrinkQuantity(Drink.coffee(), 0);
+        assertTotalDrinkQuantity(Drink.chocolate(), 0);
         assertTotalEarned(Money.euro(40));
     }
 
@@ -32,6 +35,9 @@ public final class ReportingTest {
         buyDrink(Drink.tea(), 1, Money.euro(100));
         buyDrink(Drink.tea(), 1, Money.euro(10));
 
+        assertTotalDrinkQuantity(Drink.tea(), 1);
+        assertTotalDrinkQuantity(Drink.coffee(), 0);
+        assertTotalDrinkQuantity(Drink.chocolate(), 0);
         assertTotalEarned(Money.euro(40));
     }
 
@@ -41,8 +47,11 @@ public final class ReportingTest {
         buyDrink(Drink.tea(), 1, Money.euro(10));
         buyDrink(Drink.tea(), 1, Money.euro(40));
         buyDrink(Drink.coffee(), 1, Money.euro(80));
-        buyDrink(Drink.extraHotCoffee(), 1, Money.euro(200));
+        buyDrink(Drink.coffee(), 1, Money.euro(200));
 
+        assertTotalDrinkQuantity(Drink.tea(), 2);
+        assertTotalDrinkQuantity(Drink.coffee(), 2);
+        assertTotalDrinkQuantity(Drink.chocolate(), 0);
         assertTotalEarned(Money.euro(200));
     }
 
@@ -50,6 +59,10 @@ public final class ReportingTest {
 
     private void buyDrink(Drink drink, int sugarQuantity, Money credit) {
         messageBus.publish(new DrinkOrderRequested(null, drink, sugarQuantity, credit));
+    }
+
+    private void assertTotalDrinkQuantity(Drink drink, int expectedQuantity) {
+        assertEquals(expectedQuantity, reportingRepository.totalByDrink(drink));
     }
 
     private void assertTotalEarned(Money money) {
