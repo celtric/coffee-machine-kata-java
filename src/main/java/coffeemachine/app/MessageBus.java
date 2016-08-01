@@ -7,10 +7,7 @@ public final class MessageBus {
 
     private static final Collection<Listener> listeners = new ArrayList<>();
 
-    interface Listener {
-
-        void listen(Object message);
-    }
+    private MessageBus() {}
 
     public static void publish(Object message) {
         listeners.forEach(l -> l.listen(message));
@@ -18,5 +15,10 @@ public final class MessageBus {
 
     static void listen(Listener listener) {
         listeners.add(listener);
+    }
+
+    interface Listener {
+
+        void listen(Object message);
     }
 }

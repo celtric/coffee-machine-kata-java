@@ -1,6 +1,6 @@
 package coffeemachine.domain.events;
 
-public interface DrinkRequester {
+interface DrinkRequester {
 
     String toCommand();
 }

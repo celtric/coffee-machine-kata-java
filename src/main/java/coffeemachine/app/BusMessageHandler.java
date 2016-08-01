@@ -15,7 +15,8 @@ final class BusMessageHandler<T> implements Listener {
     public void listen(Object message) {
         // TODO: implement better method of dispatching
         try {
+            //noinspection unchecked
             handler.handle((T) message);
-        } catch (ClassCastException e) {}
+        } catch (ClassCastException ignored) {}
     }
 }
