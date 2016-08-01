@@ -9,16 +9,16 @@ public final class DrinkOrdered implements DrinkRequester {
 
     private final String id;
     private final Drink drink;
-    private final int quantity;
+    private final int sugarQuantity;
 
-    public DrinkOrdered(String id, Drink drink, int quantity) {
+    public DrinkOrdered(String id, Drink drink, int sugarQuantity) {
         this.id = id;
         this.drink = drink;
-        this.quantity = quantity;
+        this.sugarQuantity = sugarQuantity;
     }
 
     @Override
     public String toCommand() {
-        return new DrinkMakerCommandFormatter().format(drink, quantity);
+        return new DrinkMakerCommandFormatter().format(drink, sugarQuantity);
     }
 }

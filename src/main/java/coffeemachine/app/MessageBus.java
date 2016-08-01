@@ -5,15 +5,13 @@ import java.util.Collection;
 
 public final class MessageBus {
 
-    private static final Collection<Listener> listeners = new ArrayList<>();
+    private final Collection<Listener> listeners = new ArrayList<>();
 
-    private MessageBus() {}
-
-    public static void publish(Object message) {
+    public void publish(Object message) {
         listeners.forEach(l -> l.listen(message));
     }
 
-    static void listen(Listener listener) {
+    void listen(Listener listener) {
         listeners.add(listener);
     }
 

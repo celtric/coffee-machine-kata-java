@@ -42,6 +42,10 @@ public final class Drink {
         return shortHand;
     }
 
+    public Money price() {
+        return price;
+    }
+
     public boolean costsLessOrEqualThan(Money money) {
         return price.lessThanOrEqual(money);
     }

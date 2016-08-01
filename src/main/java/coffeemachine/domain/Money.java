@@ -1,5 +1,8 @@
 package coffeemachine.domain;
 
+import lombok.Value;
+
+@Value
 public final class Money {
 
     private final int amount;
@@ -23,5 +26,10 @@ public final class Money {
         if (!money.currency.equals(currency)) {
             throw new RuntimeException("Forbidden operation on different currencies");
         }
+    }
+
+    public Money add(Money money) {
+        assertSameCurrency(money);
+        return new Money(amount + money.amount, currency);
     }
 }

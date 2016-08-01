@@ -1,8 +1,10 @@
 package coffeemachine.tests.acceptance;
 
+import coffeemachine.adapters.InMemoryReportingRepository;
 import coffeemachine.app.App;
 import coffeemachine.domain.Drink;
 import coffeemachine.domain.Money;
+import coffeemachine.domain.ReportingRepository;
 import coffeemachine.domain.events.DrinkOrderRequested;
 import coffeemachine.app.MessageBus;
 import coffeemachine.tests.utils.FakeDrinkMaker;
@@ -13,7 +15,9 @@ import static org.junit.Assert.*;
 public final class OrderingTest {
 
     private final FakeDrinkMaker drinkMaker = new FakeDrinkMaker();
-    private final App app = App.start(drinkMaker);
+    private final ReportingRepository reportingRepository = new InMemoryReportingRepository();
+    private final MessageBus messageBus = new MessageBus();
+    private final App app = App.start(drinkMaker, reportingRepository, messageBus);
 
     @Test
     public void a_customer_can_order_tea_with_sugar() {
@@ -73,12 +77,12 @@ public final class OrderingTest {
 
     //---[ Helpers ]--------------------------------------------------------------------//
 
-    private void buyDrink(Drink drink, int quantity, Money credit) {
-        MessageBus.publish(new DrinkOrderRequested(drink, quantity, credit));
+    private void buyDrink(Drink drink, int sugarQuantity, Money credit) {
+        messageBus.publish(new DrinkOrderRequested(null, drink, sugarQuantity, credit));
     }
 
-    private void assertDrinkRequested(Drink drink, int quantity) {
-        assertTrue(drinkMaker.hasDrinkBeenRequested(drink, quantity));
+    private void assertDrinkRequested(Drink drink, int sugarQuantity) {
+        assertTrue(drinkMaker.hasDrinkBeenRequested(drink, sugarQuantity));
     }
 
     private void assertMessagePrinted(String message) {
