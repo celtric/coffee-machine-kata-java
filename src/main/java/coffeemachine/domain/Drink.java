@@ -14,12 +14,24 @@ public final class Drink {
         return new Drink("T", Money.euro(40));
     }
 
+    public static Drink extraHotTea() {
+        return new Drink("Th", Money.euro(40));
+    }
+
     public static Drink chocolate() {
         return new Drink("H", Money.euro(50));
     }
 
+    public static Drink extraHotChocolate() {
+        return new Drink("Hh", Money.euro(50));
+    }
+
     public static Drink coffee() {
         return new Drink("C", Money.euro(60));
+    }
+
+    public static Drink extraHotCoffee() {
+        return new Drink("Ch", Money.euro(60));
     }
 
     public static Drink orangeJuice() {

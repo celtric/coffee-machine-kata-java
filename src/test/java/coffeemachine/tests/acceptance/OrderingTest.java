@@ -23,6 +23,13 @@ public final class OrderingTest {
     }
 
     @Test
+    public void a_customer_can_order_extra_hot_tea() {
+        buyDrink(Drink.extraHotTea(), 1, Money.euro(100));
+
+        assertDrinkRequested(Drink.extraHotTea(), 1);
+    }
+
+    @Test
     public void a_customer_can_order_chocolate() {
         buyDrink(Drink.chocolate(), 0, Money.euro(100));
 
@@ -30,10 +37,24 @@ public final class OrderingTest {
     }
 
     @Test
+    public void a_customer_can_order_extra_hot_chocolate() {
+        buyDrink(Drink.extraHotChocolate(), 0, Money.euro(100));
+
+        assertDrinkRequested(Drink.extraHotChocolate(), 0);
+    }
+
+    @Test
     public void a_customer_can_order_coffee() {
         buyDrink(Drink.coffee(), 0, Money.euro(100));
 
         assertDrinkRequested(Drink.coffee(), 0);
+    }
+
+    @Test
+    public void a_customer_can_order_extra_hot_coffee() {
+        buyDrink(Drink.extraHotCoffee(), 0, Money.euro(100));
+
+        assertDrinkRequested(Drink.extraHotCoffee(), 0);
     }
 
     @Test
