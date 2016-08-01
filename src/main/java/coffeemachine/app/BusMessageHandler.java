@@ -13,6 +13,7 @@ final class BusMessageHandler<T> implements Listener {
 
     @Override
     public void listen(Object message) {
+        // TODO: implement better method of dispatching
         try {
             handler.handle((T) message);
         } catch (ClassCastException e) {}
